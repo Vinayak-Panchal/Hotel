@@ -15,6 +15,8 @@ public class StandardRoom implements RoomFilter{
 	
 	private int roomPrice;
 	private int availability;
+	private int days;
+	private int pax;
 	
 	public int getroomPrice() {
 		return roomdata.roomPriceData.get("Standard Room");
@@ -31,13 +33,11 @@ public class StandardRoom implements RoomFilter{
 	public void book() throws NumberFormatException, IOException {
 		
 		System.out.println("Enter number of people");
-		int pax = Integer.parseInt(br.readLine());
+		 pax = Integer.parseInt(br.readLine());
 		System.out.println("Enter number of Days");
-		int days = Integer.parseInt(br.readLine());
-		
-		
-//		else
-//			ConfirmBooking.
+		 days = Integer.parseInt(br.readLine());
+		 
+		 checkout(pax,days);
 	}
 	public void checkout(int pax, int days) throws IOException {
 		System.out.println("Do you wish to confirm Y/N");

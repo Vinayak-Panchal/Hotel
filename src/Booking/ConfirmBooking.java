@@ -27,14 +27,15 @@ public class ConfirmBooking {
 			case 1: 
 				standardRoom.roomPrice();
 				standardRoom.roomAvailability();
-				standardRoom.book();
 				System.out.println("Do you wish to book (Y/N)");
 				String bookConfirm = br.readLine();
 				if(bookConfirm.equals("Y"))
 				{
-					standardRoom.checkout(ch, ch);
+					standardRoom.book();
 					return;
 				}
+				
+				
 				else
 					book();
 			case 2:
