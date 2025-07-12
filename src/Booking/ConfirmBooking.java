@@ -1,3 +1,4 @@
+package Booking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,32 +27,20 @@ public class ConfirmBooking {
 			case 1: 
 				standardRoom.roomPrice();
 				standardRoom.roomAvailability();
+				standardRoom.book();
 				System.out.println("Do you wish to book (Y/N)");
-				confirm = br.readLine();
-				if(confirm.equals("Y"))
+				String bookConfirm = br.readLine();
+				if(bookConfirm.equals("Y"))
 				{
-					System.out.println("Enter number of people");
-					int pax = Integer.parseInt(br.readLine());
-					System.out.println("Enter number of Days");
-					int days = Integer.parseInt(br.readLine());
-					checkout("Standard Room", 1500, pax, days);
+					standardRoom.checkout(ch, ch);
 					return;
 				}
-				
 				else
-					break;
+					book();
+			case 2:
+				
 			}
 		}while(confirm!="N");
 	}
-	public void checkout(String roomType, long price, int noOfPax, int noOfDays) throws NumberFormatException, IOException {
-		System.out.println("Do you wish to confirm Y/N");
-		Scanner scan = new Scanner(System.in);
-		String confirm = scan.next();
-		if(confirm.equals("Y")) {
-			System.out.println("Your Booking details are :\n"+"Room Type: "+roomType+"\nPrice: "+price+"\nNo of people: "+noOfPax+"\nTotal Days: "+noOfDays );
-		}
-		else
-			book();
-		
-	}
+	
 }
