@@ -3,14 +3,13 @@ package RoomDetails;
 import java.util.Map;
 
 public class RoomData {
-	Map<String, Integer> roomPriceData = Map.of("Standard Room",1500,
-												"Classic Room", 1200,
-												"DoubleBed Room", 2000,
-												"Non AC Room", 1000,
-												"AC Room", 1200);
-	Map<String, Integer> roomAvailability = Map.of("Standard Room",5,
-													"Classic Room", 5,
-													"DoubleBed Room", 5,
-													"Non AC Room", 5,
-													"AC Room", 5);
+	static Map<RoomType, Room> roomData = Map.of(RoomType.STANDARDROOM,new Room(RoomType.STANDARDROOM,1500,5),
+												RoomType.CLASSICROOM, new Room(RoomType.CLASSICROOM,2000,5),
+												RoomType.DOUBLEBEDROOM, new Room(RoomType.DOUBLEBEDROOM,2500,5),
+												RoomType.NONACROOM, new Room(RoomType.NONACROOM,1000,5),
+												RoomType.ACROOM, new Room(RoomType.ACROOM,1200,5));
+	
+	public Room getRoom(RoomType roomType) {
+		return roomData.get(roomType);
+	}
 }

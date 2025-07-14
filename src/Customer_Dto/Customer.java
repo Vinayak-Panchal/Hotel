@@ -1,3 +1,4 @@
+package Customer_Dto;
 
 public class Customer {
 	private int customerId;

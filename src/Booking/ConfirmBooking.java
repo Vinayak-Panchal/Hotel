@@ -1,47 +1,42 @@
 package Booking;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Scanner;
 
-import RoomDetails.StandardRoom;
+import java.io.IOException;
+import Customer_Dto.Customer;
+import RoomDetails.Room;
+import RoomDetails.RoomData;
+import RoomDetails.RoomType;
 
 public class ConfirmBooking {
 	
-	public void book() throws NumberFormatException, IOException {
-		StandardRoom standardRoom = new StandardRoom();
-		String confirm ="";
-		do
-		{
-			System.out.println("\nSelect your Room \n");
-			System.out.println("1: Standard Room");
-			System.out.println("2: Classic Room");
-			System.out.println("3: DoubleBed Room");
-			System.out.println("4: Non AC Room");
-			System.out.println("5: AC Room");
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			int ch = Integer.parseInt(br.readLine());
-			
+	private final RoomData roomData;
+	
+
+	public ConfirmBooking(RoomData roomData) {
+		 this.roomData = roomData;
+	}
+
+	public void displayRoomDetails(RoomType roomtype) {
+		Room room = roomData.getRoom(roomtype);
+		System.out.println("Room Type : "+roomtype);
+		System.out.println("Room Price : "+room.getPrice());
+		System.out.println("Room Availabilty : "+room.getVacancy());
+	}
+	
+	public void book(RoomType roomType, int pax, int days, Customer customer) throws NumberFormatException, IOException {
 		
-			switch(ch) {
-			case 1: 
-				standardRoom.roomPrice();
-				standardRoom.roomAvailability();
-				System.out.println("Do you wish to book (Y/N)");
-				String bookConfirm = br.readLine();
-				if(bookConfirm.equals("Y"))
-				{
-					standardRoom.book();
-					return;
-				}
-				
-				
-				else
-					book();
-			case 2:
-				
-			}
-		}while(confirm!="N");
+		Room room = roomData.getRoom(roomType);
+		if(room.getVacancy()>0)
+		{
+			long totalPrice = room.getPrice()*days;
+			System.out.println("Booking Confirmed \n");
+			System.out.println("Room Type :"+ roomType+"\n"+
+								"Room price per day :"+room.getPrice()+"\n"+
+								"Customer Id : "+customer.getId()+"\n"+
+								"Cutomer Name : "+customer.getcustomerName()+"\n"+
+								"Customer Address : "+customer.getAddress()+"\n"+
+								"Total Booking Amount : "+totalPrice);
+		}
+		
 	}
 	
 }

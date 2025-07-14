@@ -1,3 +1,4 @@
+package RoomDetails;
 
 public enum RoomType {
 	STANDARDROOM,

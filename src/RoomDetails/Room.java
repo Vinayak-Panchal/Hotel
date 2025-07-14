@@ -1,13 +1,13 @@
-
+package RoomDetails;
 public class Room {
-	private String roomType;
+	private RoomType roomType;
 	private long price;
 	private int vacancy;
 	
-	public String getRoomType() {
+	public RoomType getRoomType() {
 		return roomType;
 	}
-	public void setRoomType(String roomType) {
+	public void setRoomType(RoomType roomType) {
 		this.roomType = roomType;
 	}
 	
@@ -31,7 +31,7 @@ public class Room {
 		this.vacancy = vacancy;
 	}
 	
-	public Room(String roomType, long price, int vacancy) {
+	public Room(RoomType roomType, long price, int vacancy) {
 		this.roomType = roomType;
 		this.price = price;
 		this.vacancy = vacancy;
